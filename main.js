@@ -21,7 +21,7 @@ Your options are:
 
 `;
 
-const add = function(userInput) {
+const add = function (userInput) {
   const todo = {
     text: userInput,
     isComplete: false,
@@ -38,7 +38,7 @@ const add = function(userInput) {
   interface.question(menu, handleMenu);
 }
 
-const handleMenu = function(cmd) {
+const handleMenu = function (cmd) {
   if (cmd === '1') {
     console.clear();
     interface.question('What todo would you like to add?\n\n', add);
@@ -66,8 +66,18 @@ const handleMenu = function(cmd) {
 
 console.clear();
 console.log('Your todos are:')
-for (const todo of todos) {
-  console.log('* ' + todo.text);
+// for (const todo of todos) {
+//   console.log('* ' + todo.text);
+
+// }
+
+for (let i = 0; i < todos.length; i++) {
+  console.log((i + 1) + '. ' + todos[i].text)
 }
 
 interface.question(menu, handleMenu);
+
+
+
+
+
