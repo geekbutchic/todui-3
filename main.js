@@ -44,8 +44,9 @@ const handleMenu = function (cmd) {
     interface.question('What todo would you like to add?\n\n', add);
   } else if (cmd === '2') {
     console.clear();
-    console.log(`Feature ${cmd} is still under construction. Sorry!`);
-    interface.question(menu, handleMenu);
+    console.log(menuList());
+    interface.question("Which todo do you want to remove?", remove)
+    interface.question(menu, menuList);
   } else if (cmd === '3') {
     console.clear();
     console.log(`Feature ${cmd} is still under construction. Sorry!`);
@@ -66,18 +67,28 @@ const handleMenu = function (cmd) {
 
 console.clear();
 console.log('Your todos are:')
+const menuList = () => {
+  for (let i = 0; i < todos.length; i++) {
+    console.log((i + 1) + '. ' + todos[i].text)
+  }
+}
+menuList();
+interface.question(menu, handleMenu);
+
+// const remove = (selection) => {
+//   let indexNum = 1;
+//   let indexNum = numbers.splice(indexNum,1);
+// }
+
+const remove = (arr, value) => {
+  const index = arr.indexOf(value);
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  return arr;
+}
+
 // for (const todo of todos) {
 //   console.log('* ' + todo.text);
 
 // }
-
-for (let i = 0; i < todos.length; i++) {
-  console.log((i + 1) + '. ' + todos[i].text)
-}
-
-interface.question(menu, handleMenu);
-
-
-
-
-
